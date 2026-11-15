@@ -54,13 +54,12 @@ export default function AboutPage() {
       <section id="academic-integrity" className="mt-14 scroll-mt-24">
         <h2 className="font-display text-2xl font-semibold">Academic Integrity</h2>
         <p className="mt-4 leading-relaxed text-muted">
-          I, {site.author}, affirm that this work was prepared for {site.course}, that all sources used are
-          acknowledged, that the use of AI assistance is fully disclosed above, and that I take responsibility for the
+          We, {site.submittedBy}, affirm that this work was prepared for {site.course}, that all sources used are
+          acknowledged, that the use of AI assistance is fully disclosed above, and that we take responsibility for the
           accuracy and integrity of its content.
         </p>
         <dl className="mt-4 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
-          <dt className="text-muted">Author</dt><dd>{site.author}</dd>
-          <dt className="text-muted">Section</dt><dd>{site.section}</dd>
+          <dt className="text-muted">Submitted by</dt><dd><Link href="/class" className="text-gold underline-offset-4 hover:underline">{site.submittedBy}</Link></dd>
           <dt className="text-muted">Instructor</dt><dd>{site.instructor}</dd>
           <dt className="text-muted">Submitted</dt><dd>{site.submittedOn}</dd>
         </dl>

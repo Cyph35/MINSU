@@ -26,11 +26,10 @@ export function SiteFooter() {
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-gold">Electronic Submission</p>
           <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-sm">
-            <dt className="text-muted">Submitted by</dt><dd>{site.author}</dd>
-            <dt className="text-muted">Section</dt><dd>{site.section}</dd>
+            <dt className="text-muted">Submitted by</dt><dd><Link href="/class" className="text-gold underline-offset-4 hover:underline">{site.submittedBy}</Link></dd>
             <dt className="text-muted">Instructor</dt><dd>{site.instructor}</dd>
             <dt className="text-muted">Date</dt><dd>{site.submittedOn}</dd>
-            <dt className="text-muted">Live link</dt><dd className="break-all">{site.url}</dd>
+            <dt className="text-muted">Live link</dt><dd className="break-all"><a href={site.url} target="_blank" rel="noopener noreferrer" className="text-gold underline-offset-4 hover:underline">{site.url}</a></dd>
           </dl>
         </div>
       </div>

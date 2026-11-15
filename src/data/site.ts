@@ -5,10 +5,9 @@ export const site = {
   course:
     'GEC110 Final Requirement – History of Filipino Muslims and Indigenous Peoples of Mindanao, Sulu, and Palawan',
   school: 'Mindanao State University – General Santos',
-  author: 'Klint Vincent M. Lloren',
-  section: '[Section]',
+  submittedBy: 'GEC110 C25-3',
   instructor: 'IVY G. MASQUE',
   submittedOn: 'November 27, 2026',
-  url: '[Live URL — add after deploy]',
+  url: 'https://minsu-pala.netlify.app/',
   proofreaders: ['[Proofreader name]', '[Proofreader name]'],
 } as const;
