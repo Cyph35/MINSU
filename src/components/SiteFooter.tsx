@@ -29,7 +29,7 @@ export function SiteFooter() {
             <dt className="text-muted">Submitted by</dt><dd><Link href="/class" className="text-gold underline-offset-4 hover:underline">{site.submittedBy}</Link></dd>
             <dt className="text-muted">Instructor</dt><dd>{site.instructor}</dd>
             <dt className="text-muted">Date</dt><dd>{site.submittedOn}</dd>
-            <dt className="text-muted">Live link</dt><dd className="break-all"><a href={site.url} target="_blank" rel="noopener noreferrer" className="text-gold underline-offset-4 hover:underline">{site.url}</a></dd>
+            <dt className="text-muted">Live link</dt><dd className="[overflow-wrap:anywhere]"><a href={site.url} target="_blank" rel="noopener noreferrer" className="text-gold underline-offset-4 hover:underline">{site.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></dd>
           </dl>
         </div>
       </div>
