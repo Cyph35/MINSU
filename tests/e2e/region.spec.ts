@@ -19,10 +19,11 @@ test('?tab=heritage opens the heritage tab and citations link to /about', async 
   await expect(cite).toHaveAttribute('href', /^\/about#src-/);
 });
 
-test('gallery shows images, placeholders and opens a lightbox', async ({ page }) => {
+test('gallery shows images, audio/video link cards and opens a lightbox', async ({ page }) => {
   await page.goto('/regions/palawan?tab=gallery');
   await expect(page.getByTestId('gallery-item')).toHaveCount(10);
-  await expect(page.getByText('audio placeholder')).toBeVisible();
+  await expect(page.getByRole('link', { name: /Listen on Wikimedia Commons/ })).toHaveAttribute('href', /commons\.wikimedia\.org/);
+  await expect(page.getByRole('link', { name: /Watch on YouTube/ })).toHaveAttribute('href', /youtube\.com\/results/);
   await page.getByRole('button', { name: /Open image/ }).first().click();
   const dialog = page.getByRole('dialog');
   await expect(dialog).toBeVisible();

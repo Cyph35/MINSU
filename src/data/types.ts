@@ -8,7 +8,7 @@ export interface Cited {
 
 export interface MediaItem {
   kind: 'image' | 'audio' | 'video';
-  /** Local path under /public or remote https URL. Omit for placeholders. */
+  /** Local path under /public or remote https URL. Omit for link cards. */
   src?: string;
   alt: string;
   caption: string;
@@ -16,7 +16,9 @@ export interface MediaItem {
   license: string;
   /** Wikimedia file page or other origin, shown in credits. */
   sourceUrl?: string;
-  placeholder?: boolean;
+  /** External page for audio/video link cards (no hosted file). */
+  href?: string;
+  linkLabel?: string;
 }
 
 export interface PeopleProfile { name: string; group: 'moro' | 'lumad' | 'settler'; description: string; cite: CitationId[] }

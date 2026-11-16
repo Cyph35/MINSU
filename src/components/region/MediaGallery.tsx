@@ -3,20 +3,23 @@ import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import type { MediaItem } from '@/data/types';
 
-function Placeholder({ item }: { item: MediaItem }) {
+function LinkCard({ item }: { item: MediaItem }) {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-surface to-ink-2 p-4 text-center">
+    <a
+      href={item.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-surface to-ink-2 p-4 text-center transition-colors hover:from-surface-2"
+    >
       <span className="grid size-12 place-items-center rounded-full border border-gold/40 text-gold" aria-hidden>
         {item.kind === 'audio' ? (
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" /></svg>
-        ) : item.kind === 'video' ? (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
         ) : (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="9" cy="9" r="2" /><path d="M21 15l-5-5L5 21" /></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
         )}
       </span>
-      <span className="text-[13px] uppercase tracking-[0.2em] text-muted">{item.kind} placeholder</span>
-    </div>
+      <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-gold group-hover:underline">{item.linkLabel} ↗</span>
+    </a>
   );
 }
 
@@ -48,7 +51,7 @@ export function MediaGallery({ items }: { items: MediaItem[] }) {
     <>
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((m, i) => {
-          const isImage = m.kind === 'image' && m.src && !m.placeholder && !broken.has(i);
+          const isImage = m.kind === 'image' && m.src && !broken.has(i);
           return (
             <li key={i} className="glass overflow-hidden rounded-[var(--radius-card)]" data-testid="gallery-item">
               <figure>
@@ -58,13 +61,13 @@ export function MediaGallery({ items }: { items: MediaItem[] }) {
                       <Image src={m.src!} alt={m.alt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="plate-img object-cover transition duration-500 group-hover:scale-[1.03]" onError={() => setBroken((b) => new Set(b).add(i))} />
                     </button>
                   ) : (
-                    <Placeholder item={m} />
+                    <LinkCard item={m} />
                   )}
                 </div>
                 <figcaption className="p-4">
                   <p className="text-sm leading-snug">{m.caption}</p>
                   <p className="mt-1.5 text-[13px] text-muted">
-                    {m.placeholder ? m.credit : <>© {m.credit} · {m.license}{m.sourceUrl && <> · <a href={m.sourceUrl} target="_blank" rel="noreferrer" className="underline hover:text-text">source</a></>}</>}
+                    {m.href ? m.credit : <>© {m.credit} · {m.license}{m.sourceUrl && <> · <a href={m.sourceUrl} target="_blank" rel="noreferrer" className="underline hover:text-text">source</a></>}</>}
                   </p>
                 </figcaption>
               </figure>

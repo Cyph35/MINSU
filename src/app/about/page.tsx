@@ -7,7 +7,7 @@ import { site } from '@/data/site';
 export const metadata: Metadata = { title: 'About & AI Disclosure', description: 'Methodology, academic integrity, AI disclosure, sources and image credits.' };
 
 export default function AboutPage() {
-  const credits = regions.flatMap((r) => r.media.filter((m) => m.kind === 'image' && !m.placeholder).map((m) => ({ region: r.shortName, m })));
+  const credits = regions.flatMap((r) => r.media.filter((m) => m.kind === 'image' && !m.href).map((m) => ({ region: r.shortName, m })));
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
       <p className="text-xs uppercase tracking-[0.3em] text-gold">About</p>
@@ -26,7 +26,7 @@ export default function AboutPage() {
           <li>Every factual paragraph is linked to at least one published source, listed below. An automated test fails the build if a citation is missing or does not resolve.</li>
           <li>Population figures come from the 2020 Census of Population and Housing of the Philippine Statistics Authority.</li>
           <li>Peoples are named by their self-designations where known. Conflict is described factually, without assigning collective blame to any people.</li>
-          <li>Images are openly licensed (public domain or Creative Commons BY / BY-SA) from Wikimedia Commons and credited individually. Audio and video slots are clearly marked placeholders.</li>
+          <li>Images are openly licensed (public domain or Creative Commons BY / BY-SA) from Wikimedia Commons and credited individually. Each region’s audio and video cards link out to Wikimedia Commons and YouTube search results; those recordings are not hosted on this site.</li>
           <li>The map is a stylized simplification of provincial boundaries and is not survey-accurate.</li>
         </ul>
       </section>
