@@ -9,5 +9,5 @@ export const site = {
   instructor: 'IVY G. MASQUE',
   submittedOn: 'November 27, 2026',
   url: 'https://minsu-pala.netlify.app/',
-  proofreaders: ['[Proofreader name]', '[Proofreader name]'],
+  proofreaders: ['Patricia Alexie Romares Sevilla', 'Jillana Kaye Arcilla'],
 } as const;
