@@ -4,7 +4,7 @@ import { PROVINCE_META } from './layers';
 import { ADMIN_REGIONS, PROVINCE_INFO, SULU_NOTE } from '@/data/mapLayers';
 import { InfoTip } from '@/components/InfoTip';
 import { getRegion } from '@/data/regions';
-import { formatNumber } from '@/lib/format';
+import { CountUp } from '@/components/CountUp';
 
 interface Props {
   kind: 'province' | 'admin';
@@ -39,7 +39,7 @@ export function LayerCard({ kind, id, variant, style, onClose, onPointerEnter, o
         <dl className="mt-4 grid gap-3 text-sm">
           <div className="bg-white/5 p-2.5">
             <dt className="uppercase text-[13px] text-muted">Population (2020)</dt>
-            <dd className="mt-0.5 font-semibold">{info.population ? formatNumber(info.population) : '—'}{info.popNote && <span className="block text-[13px] font-normal text-muted">{info.popNote}</span>}</dd>
+            <dd className="mt-0.5 font-semibold">{info.population ? <CountUp value={info.population} /> : '—'}{info.popNote && <span className="block text-[13px] font-normal text-muted">{info.popNote}</span>}</dd>
           </div>
           <div className="bg-white/5 p-2.5">
             <dt className="uppercase text-[13px] text-muted">Peoples</dt>
@@ -63,7 +63,7 @@ export function LayerCard({ kind, id, variant, style, onClose, onPointerEnter, o
         <dl className="mt-4 grid gap-3 text-sm">
           <div className="bg-white/5 p-2.5">
             <dt className="uppercase text-[13px] text-muted">Population ({a.population.year})</dt>
-            <dd className="mt-0.5 font-semibold">{formatNumber(a.population.value)}{a.population.note && <span className="block text-[13px] font-normal text-muted">{a.population.note}</span>}</dd>
+            <dd className="mt-0.5 font-semibold"><CountUp value={a.population.value} />{a.population.note && <span className="block text-[13px] font-normal text-muted">{a.population.note}</span>}</dd>
           </div>
           <div className="bg-white/5 p-2.5">
             <dt className="uppercase text-[13px] text-muted">Provinces &amp; independent areas</dt>

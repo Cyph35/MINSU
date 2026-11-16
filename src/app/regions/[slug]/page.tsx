@@ -7,10 +7,10 @@ import { CitedParagraph } from '@/components/region/CitedParagraph';
 import { Plate } from '@/components/region/Plate';
 import { RegionTimeline } from '@/components/region/RegionTimeline';
 import { CiteLinks } from '@/components/CiteLinks';
+import { CountUp } from '@/components/CountUp';
 import { MediaGallery } from '@/components/region/MediaGallery';
 import { RegionTabs } from '@/components/region/RegionTabs';
 import { TriChips } from '@/components/TriChips';
-import { formatNumber } from '@/lib/format';
 import { getSource } from '@/data/sources';
 
 export const dynamicParams = false;
@@ -59,7 +59,7 @@ export default async function RegionPage({ params }: Props) {
           <dl className="mt-8 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-3">
             <div className="glass rounded-xl p-3">
               <dt className="text-[13px] uppercase tracking-wider text-muted">Population ({r.population.year})</dt>
-              <dd className="mt-1 font-display text-2xl tabular-nums">{formatNumber(r.population.value)}</dd>
+              <dd className="mt-1 font-display text-2xl tabular-nums"><CountUp value={r.population.value} /></dd>
             </div>
             <div className="glass rounded-xl p-3 sm:col-span-2">
               <dt className="text-[13px] uppercase tracking-wider text-muted">Languages</dt>

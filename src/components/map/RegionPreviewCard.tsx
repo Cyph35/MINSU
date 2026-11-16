@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import type { Region } from '@/data/types';
 import { TriChips } from '@/components/TriChips';
-import { formatNumber } from '@/lib/format';
+import { CountUp } from '@/components/CountUp';
 
 interface Props {
   region: Region;
@@ -46,7 +46,7 @@ export function RegionPreviewCard({ region, variant, style, onClose, onPointerEn
       <dl className="mt-4 grid grid-cols-2 gap-3 text-sm">
         <div className="rounded-lg bg-white/5 p-2.5">
           <dt className="text-[13px] uppercase tracking-wider text-muted">Population ({region.population.year})</dt>
-          <dd className="mt-0.5 font-semibold tabular-nums">{formatNumber(region.population.value)}</dd>
+          <dd className="mt-0.5 font-semibold tabular-nums"><CountUp value={region.population.value} /></dd>
         </div>
         <div className="rounded-lg bg-white/5 p-2.5">
           <dt className="text-[13px] uppercase tracking-wider text-muted">Languages</dt>
